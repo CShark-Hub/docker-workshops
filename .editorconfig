@@ -8,6 +8,29 @@ insert_final_newline = true
 indent_style = space
 indent_size = 4
 
+[*.sln]
+indent_style = tab
+
+[*.csproj]
+indent_size = 2
+
+[*.css]
+indent_size = 2
+
+[*.json]
+indent_size = 2
+
+[*.js]
+indent_size = 2
+
+[/**/{.vs,lib,.vscode,bin,obj}/**]
+charset = unset
+end_of_line = unset
+insert_final_newline = unset
+trim_trailing_whitespace = unset
+indent_style = unset
+indent_size = unset
+
 ###############################
 # .NET Coding Conventions     #
 ###############################
