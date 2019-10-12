@@ -1,4 +1,4 @@
-FROM mcr.microsoft.com/dotnet/core/sdk:3.0
+FROM mcr.microsoft.com/dotnet/core/sdk:3.0 AS build
 
 WORKDIR /src
 
@@ -8,8 +8,15 @@ RUN dotnet restore
 
 COPY ./MyDemoApp /src
 
-RUN dotnet publish -c Release -o /ouput
+RUN echo 'TEST' \
+    && dotnet publish -c Release -o /output
 
-WORKDIR /ouput
+FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
+
+WORKDIR /demo-app
+
+COPY --from=build /output ./
+
+EXPOSE 80
 
 CMD [ "dotnet", "./MyDemoApp.dll" ]
