@@ -14,7 +14,7 @@ namespace MyDemoApp.Pages
 
         public void OnGet()
         {
-            _logger.LogError("Page loaded");
+            _logger.LogError("Page loaded!");
         }
     }
 }
