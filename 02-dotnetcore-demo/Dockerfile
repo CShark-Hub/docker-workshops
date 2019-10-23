@@ -13,7 +13,8 @@ RUN echo 'TEST' \
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:3.0
 
-ENV ASPNETCORE_ENVIRONMENT=Production
+ENV ASPNETCORE_ENVIRONMENT=Production \
+    LOG_DIR=/var/log/demo-app
 
 COPY /docker/src /
 
@@ -23,7 +24,7 @@ COPY --from=build /output ./
 
 EXPOSE 80
 
-VOLUME [ "./logs" ]
+VOLUME [ "${LOG_DIR}" ]
 
 ENTRYPOINT [ "/opt/entrypoint.sh" ]
 CMD [ "dotnet", "./MyDemoApp.dll" ]
